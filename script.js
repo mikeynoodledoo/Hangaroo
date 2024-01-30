@@ -33,6 +33,7 @@ function initializeGame() {
     points = 0;
     cluesUsed = 0;
     updateDisplay();
+	getQuestions();
 }
 
 function updateDisplay() {
