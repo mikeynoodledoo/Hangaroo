@@ -40,6 +40,9 @@ function updateDisplay() {
     const wordDisplay = document.getElementById('word-display');
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
     updateLetterButtons();
+	
+	const question = document.getElementById('question-container');
+	
     document.getElementById('points').innerText = `Points: ${points}`;
 }
 
