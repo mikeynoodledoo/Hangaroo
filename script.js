@@ -33,7 +33,7 @@ function initializeGame() {
     points = 0;
     cluesUsed = 0;
     updateDisplay();
-	getQuestions();
+	postQuestions();
 }
 
 function updateDisplay() {
@@ -178,9 +178,9 @@ function getQuestions(){
 	//and respectively passes them to parameters easy, hard, expert
 	]).then(([easy, hard, expert]) => { 
 		//declare 3 constant variables with values of respective text files in array form, delimited with next-line (\n) character
-		const easyQlines = easy.split('\n'),
-		hardQlines = hard.split('\n'),
-		expertQlines = expert.split('\n');	
+		const easyQlines = easy.split('\n');
+		const hardQlines = hard.split('\n');
+		const expertQlines = expert.split('\n');	
 		//log to console for debugging
 		console.log('Easy file contents:', easyQlines);
 		console.log('Hard file content:', hardQlines);
@@ -196,6 +196,22 @@ function getQuestions(){
 		return [easyQlines, hardQlines, expertQlines];
 	})
 	
+}
+
+//function that returns array of questions based on difficulty parameter
+function postQuestions(difficulty) {
+	const questions = getQuestions(); //get array of array-type questions
+	const easyQ = questions[0]; //array of easy questions
+	const hardQ= questions[1]; //array of hard questions
+	const expertQ = questions[2]; //array of expert questions
+	
+	if (difficulty == "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
+		return easyQ;
+	} else if (difficulty == "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
+		return hardQ;
+	} else if (difficulty == "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
+		return expertQ;
+	}
 }
 
 
